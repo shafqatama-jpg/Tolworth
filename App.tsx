@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { HashRouter as Router, Routes, Route, Navigate, useLocation, Link, useNavigate } from 'react-router-dom';
 import { DataProvider, useData } from './DataContext';
 import { 
@@ -72,67 +73,69 @@ const Header = () => {
   ];
 
   return (
-    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm transition-all duration-300">
-      {/* Top Bar for Mobile/Desktop visibility of phone */}
-      <div className="bg-slate-900 text-white text-xs md:text-sm py-2.5 text-center md:hidden">
-        <a href={`tel:${settings.phone}`} className="flex items-center justify-center gap-2 font-bold focus:outline-none focus:underline py-1">
-           <Phone size={14} className="text-brand-accent" aria-hidden="true" /> Call Us: {settings.phone}
-        </a>
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16 md:h-20">
-          {/* Logo */}
-          <Link to="/" onClick={() => window.scrollTo(0,0)} className="flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-brand-accent rounded-lg p-1 group" aria-label="Tolworth Driving Centre Home">
-            <div className="bg-brand-dark text-brand-accent p-1.5 md:p-2 rounded-lg group-hover:scale-105 transition-transform" aria-hidden="true">
-              <CheckCircle className="w-5 h-5 md:w-6 md:h-6" />
-            </div>
-            <div>
-              <h1 className="text-lg md:text-xl font-bold text-slate-900 leading-tight">{settings.siteName}</h1>
-            </div>
-          </Link>
-
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-6 lg:gap-8" aria-label="Main Navigation">
-            {navLinks.map((link) => (
-              <button 
-                key={link.name}
-                onClick={() => handleNavClick(link.id)}
-                className="text-sm font-medium text-slate-600 hover:text-brand-accent transition-colors cursor-pointer focus:outline-none focus:text-brand-accent focus:underline py-2"
-              >
-                {link.name}
-              </button>
-            ))}
-            
-            {/* Highlighted Phone Number */}
-            <div className="hidden lg:flex items-center gap-2 text-slate-900 font-bold bg-slate-50 px-3 py-1.5 rounded-full border border-slate-200">
-               <Phone size={16} className="text-brand-accent fill-current" aria-hidden="true" />
-               <a href={`tel:${settings.phone}`} className="focus:outline-none focus:underline">{settings.phone}</a>
-            </div>
-
-            <Link to="/booking" className="bg-brand-accent text-brand-dark px-5 py-2.5 rounded-md font-bold hover:bg-yellow-300 transition-colors shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-accent active:scale-95 transform">
-              Book Lesson
-            </Link>
-          </nav>
-
-          {/* Mobile Menu Button */}
-          <button 
-            className="md:hidden text-slate-700 p-2 focus:outline-none focus:ring-2 focus:ring-brand-accent rounded-lg hover:bg-slate-50" 
-            onClick={() => setIsOpen(!isOpen)} 
-            aria-label={isOpen ? "Close menu" : "Open menu"}
-            aria-expanded={isOpen}
-            aria-controls="mobile-menu"
-          >
-            {isOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
+    <>
+      <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm transition-all duration-300">
+        {/* Top Bar for Mobile/Desktop visibility of phone */}
+        <div className="bg-slate-900 text-white text-xs md:text-sm py-2.5 text-center md:hidden">
+          <a href={`tel:${settings.phone}`} className="flex items-center justify-center gap-2 font-bold focus:outline-none focus:underline py-1">
+             <Phone size={14} className="text-brand-accent" aria-hidden="true" /> Call Us: {settings.phone}
+          </a>
         </div>
-      </div>
 
-      {/* Mobile Nav Overlay */}
-      {isOpen && (
-        <div id="mobile-menu" className="md:hidden fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-sm" onClick={() => setIsOpen(false)}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16 md:h-20">
+            {/* Logo */}
+            <Link to="/" onClick={() => window.scrollTo(0,0)} className="flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-brand-accent rounded-lg p-1 group" aria-label="Tolworth Driving Centre Home">
+              <div className="bg-brand-dark text-brand-accent p-1.5 md:p-2 rounded-lg group-hover:scale-105 transition-transform" aria-hidden="true">
+                <CheckCircle className="w-5 h-5 md:w-6 md:h-6" />
+              </div>
+              <div>
+                <h1 className="text-lg md:text-xl font-bold text-slate-900 leading-tight">{settings.siteName}</h1>
+              </div>
+            </Link>
+
+            {/* Desktop Nav */}
+            <nav className="hidden md:flex items-center gap-6 lg:gap-8" aria-label="Main Navigation">
+              {navLinks.map((link) => (
+                <button 
+                  key={link.name}
+                  onClick={() => handleNavClick(link.id)}
+                  className="text-sm font-medium text-slate-600 hover:text-brand-accent transition-colors cursor-pointer focus:outline-none focus:text-brand-accent focus:underline py-2"
+                >
+                  {link.name}
+                </button>
+              ))}
+              
+              {/* Highlighted Phone Number */}
+              <div className="hidden lg:flex items-center gap-2 text-slate-900 font-bold bg-slate-50 px-3 py-1.5 rounded-full border border-slate-200">
+                 <Phone size={16} className="text-brand-accent fill-current" aria-hidden="true" />
+                 <a href={`tel:${settings.phone}`} className="focus:outline-none focus:underline">{settings.phone}</a>
+              </div>
+
+              <Link to="/booking" className="bg-brand-accent text-brand-dark px-5 py-2.5 rounded-md font-bold hover:bg-yellow-300 transition-colors shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-accent active:scale-95 transform">
+                Book Lesson
+              </Link>
+            </nav>
+
+            {/* Mobile Menu Button */}
+            <button 
+              className="md:hidden text-slate-700 p-2 focus:outline-none focus:ring-2 focus:ring-brand-accent rounded-lg hover:bg-slate-50 relative z-50" 
+              onClick={() => setIsOpen(!isOpen)} 
+              aria-label={isOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isOpen}
+              aria-controls="mobile-menu"
+            >
+              {isOpen ? <X size={28} /> : <Menu size={28} />}
+            </button>
+          </div>
+        </div>
+      </header>
+
+      {/* Mobile Menu Portal - Renders at document body level to avoid clipping/z-index issues */}
+      {isOpen && createPortal(
+        <div id="mobile-menu" className="md:hidden fixed inset-0 z-[60] bg-slate-900/50 backdrop-blur-sm" onClick={() => setIsOpen(false)}>
            <div 
-             className="bg-white w-3/4 max-w-sm h-full shadow-2xl p-4 flex flex-col"
+             className="bg-white w-3/4 max-w-sm h-full shadow-2xl p-4 flex flex-col animate-in slide-in-from-left duration-200"
              onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside menu
            >
               <div className="flex justify-between items-center mb-8 border-b border-gray-100 pb-4">
@@ -167,9 +170,10 @@ const Header = () => {
                  </Link>
               </div>
            </div>
-        </div>
+        </div>,
+        document.body
       )}
-    </header>
+    </>
   );
 };
 

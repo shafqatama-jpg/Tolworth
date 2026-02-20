@@ -2,10 +2,10 @@
 import { Service, Booking, BookingStatus, Testimonial, BlogPost, SiteSettings } from './types';
 
 export const INITIAL_SETTINGS: SiteSettings = {
-  siteName: "Tolworth Driving Centre",
-  phone: "07301498451",
+  siteName: "Tolworth Driving School",
+  phone: "07727444743",
   email: "info@tolworthdriving.co.uk",
-  whatsapp: "447301498451",
+  whatsapp: "447727444743",
   address: "Tolworth, Surbiton, KT6 7FT",
   heroHeadline: "Pass Your Driving Test with Confidence",
   heroSubheadline: "The #1 choice for Tolworth Test Routes. We specialize in short-notice test cover and expert local tuition.",
@@ -58,7 +58,7 @@ export const INITIAL_SERVICES: Service[] = [
     features: ['Parking Practice', 'Motorway Confidence', 'Roundabout Safety', 'Eco Driving'],
     category: 'standard'
   },
-  
+
   // Intensive / Packages
   {
     id: 'p1',
@@ -79,13 +79,13 @@ export const INITIAL_SERVICES: Service[] = [
     features: ['Intensive Scheduling', 'Mock Test Included', 'Route Mastery', 'Fast-Track Progress'],
     category: 'intensive'
   },
-  
+
   // Test Prep
   {
     id: 't1',
     title: 'Test Day Cover',
     duration: '3 Hours',
-    price: 130,
+    price: 140,
     description: 'Emergency or planned test cover. Includes warm-up and car hire.',
     features: ['Short Notice Available', '1 Hour Warm-up', 'Car Hire for Test', 'Debrief'],
     category: 'test-prep'

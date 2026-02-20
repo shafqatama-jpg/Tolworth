@@ -14,6 +14,16 @@ import { BookingStatus, Service, Testimonial, ServiceCategory } from './types';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import Logo from './Logo';
 
+// --- Helper Components ---
+
+const ScrollToTop = () => {
+  const { pathname, search } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname, search]);
+  return null;
+};
+
 // --- Components ---
 
 const WhatsAppFloat = () => {
@@ -1486,8 +1496,8 @@ const TermsPage = () => {
 
 const BookingPage = () => {
   const { services, addBooking } = useData();
-  const searchParams = new URLSearchParams(useLocation().search);
-  const preSelectedService = searchParams.get('service') || (services[0]?.id || '');
+  const { search } = useLocation();
+  const preSelectedService = new URLSearchParams(search).get('service') || (services[0]?.id || '');
 
   const [formData, setFormData] = useState({
     name: '',
@@ -1499,6 +1509,15 @@ const BookingPage = () => {
     transmission: 'Manual', // Default transmission
     notes: ''
   });
+
+  // Sync service selection when URL parameter changes
+  useEffect(() => {
+    const serviceFromUrl = new URLSearchParams(search).get('service');
+    if (serviceFromUrl) {
+      setFormData(prev => ({ ...prev, serviceId: serviceFromUrl }));
+    }
+  }, [search]);
+
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -2285,6 +2304,7 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
 const AppContent = () => {
   return (
     <Router>
+      <ScrollToTop />
       <Routes>
         {/* Public Routes - All Main Content is on Home (Single Page) */}
         <Route path="/" element={<PublicLayout><HomePage /></PublicLayout>} />

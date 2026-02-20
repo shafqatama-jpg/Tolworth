@@ -3,10 +3,10 @@ import { Service, Booking, BookingStatus, Testimonial, BlogPost, SiteSettings } 
 
 export const INITIAL_SETTINGS: SiteSettings = {
   siteName: "Tolworth Driving School",
-  phone: "07727444743",
+  phone: "07727 444 743",
   email: "info@tolworthdriving.co.uk",
   whatsapp: "447727444743",
-  address: "Tolworth, Surbiton, KT6 7FT",
+  address: "Tolworth, Surbiton, KT6 7QJ",
   heroHeadline: "Pass Your Driving Test with Confidence",
   heroSubheadline: "The #1 choice for Tolworth Test Routes. We specialize in short-notice test cover and expert local tuition.",
   primaryColor: "#0f172a",
@@ -29,19 +29,19 @@ export const INITIAL_SETTINGS: SiteSettings = {
 };
 
 export const INITIAL_SERVICES: Service[] = [
-  // Standard Lessons
+  // Regular Lessons (Standard)
   {
     id: 's1',
-    title: 'Manual Lesson',
+    title: 'Manual Driving Lesson',
     duration: '2 Hours',
     price: 75,
     description: 'Expert manual tuition. Master gear control and local Tolworth routes.',
-    features: ['1-on-1 Tuition', 'Pick up & Drop off', 'Progress Log', 'Theory Support'],
+    features: ['1-on-1 Tuition', 'Pick up & Drop off', 'Progress Tracking', 'Theory Support'],
     category: 'standard'
   },
   {
     id: 's2',
-    title: 'Automatic Lesson',
+    title: 'Automatic Driving Lesson',
     duration: '2 Hours',
     price: 75,
     description: 'Stress-free automatic lessons. Focus on the road, not the gears.',
@@ -58,46 +58,75 @@ export const INITIAL_SERVICES: Service[] = [
     features: ['Parking Practice', 'Motorway Confidence', 'Roundabout Safety', 'Eco Driving'],
     category: 'standard'
   },
-
-  // Intensive / Packages
   {
-    id: 'p1',
-    title: 'Starter Package',
+    id: 's4',
+    title: 'Pass Plus Course',
+    duration: '6 Hours',
+    price: 240,
+    description: 'Advanced training after passing your test. Six modules covering all driving conditions.',
+    features: ['Insurance Discounts', 'Motorway Training', 'Night Driving', 'Rural Roads'],
+    category: 'standard'
+  },
+
+  // Intensive Packages
+  {
+    id: 'p0',
+    title: '10 Hours Block Booking',
     duration: '10 Hours',
-    price: 650,
-    description: 'Perfect for beginners starting their journey. Save money on hourly rates.',
-    features: ['Discounted Rate', 'Flexible Scheduling', 'Priority Booking', 'Syllabus structured'],
-    category: 'intensive',
+    price: 365,
+    description: 'Our most popular starter block. Perfect for both manual and automatic learners.',
+    features: ['Discounted Hourly Rate', 'Flexible Scheduling', 'Manual or Automatic', 'Progress Record'],
+    category: 'standard',
     popular: true
   },
   {
+    id: 'p1',
+    title: 'Starter Intensive',
+    duration: '10 Hours',
+    price: 650,
+    description: 'Perfect for beginners starting their journey. Save more on block bookings.',
+    features: ['Discounted Rate', 'Flexible Scheduling', 'Priority Booking', 'Syllabus Structured'],
+    category: 'intensive'
+  },
+  {
     id: 'p2',
-    title: 'Intermediate Intensive',
+    title: 'Midway Intensive',
     duration: '20 Hours',
     price: 1250,
     description: 'Accelerate your learning. Ideal for those wanting to pass within 1-2 months.',
     features: ['Intensive Scheduling', 'Mock Test Included', 'Route Mastery', 'Fast-Track Progress'],
+    category: 'intensive',
+    popular: true
+  },
+  {
+    id: 'p3',
+    title: 'Full Intensive',
+    duration: '30 Hours',
+    price: 1850,
+    description: 'Complete beginner to test-ready. The fastest way to get your license.',
+    features: ['Total Mastery', 'Multiple Mock Tests', 'Test Booking Help', 'Guaranteed Quality'],
     category: 'intensive'
   },
 
-  // Test Prep
+  // Test Preparation
   {
     id: 't1',
-    title: 'Test Day Cover',
+    title: 'Practical Test Cover',
     duration: '3 Hours',
     price: 140,
-    description: 'Emergency or planned test cover. Includes warm-up and car hire.',
+    description: 'Emergency or planned test cover. Includes warm-up and car hire for test.',
     features: ['Short Notice Available', '1 Hour Warm-up', 'Car Hire for Test', 'Debrief'],
     category: 'test-prep'
   },
   {
     id: 't2',
-    title: 'Mock Test & Review',
+    title: 'Professional Mock Test',
     duration: '2 Hours',
     price: 80,
     description: 'Simulate the real test conditions on actual Tolworth test routes.',
-    features: ['Real Test Marking', 'Route Familiarization', 'Full Debrief', 'Identify Weaknesses'],
-    category: 'test-prep'
+    features: ['Real Test Marking', 'Route Familiarization', 'Full Debrief', 'Weakness ID'],
+    category: 'test-prep',
+    popular: true
   }
 ];
 
@@ -109,7 +138,7 @@ export const INITIAL_BOOKINGS: Booking[] = [
     phone: '07123456789',
     serviceId: 's1',
     date: '2023-10-25',
-    postcode: 'KT6 7FT',
+    postcode: 'KT6 7QJ',
     transmission: 'Manual',
     status: BookingStatus.CONFIRMED,
     createdAt: '2023-10-20T10:00:00Z'

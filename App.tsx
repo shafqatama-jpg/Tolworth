@@ -17,10 +17,17 @@ import Logo from './Logo';
 // --- Helper Components ---
 
 const ScrollToTop = () => {
-  const { pathname, search } = useLocation();
+  const { pathname, search, hash } = useLocation();
   useEffect(() => {
+    if (hash) {
+      const el = document.getElementById(hash.slice(1));
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+        return;
+      }
+    }
     window.scrollTo(0, 0);
-  }, [pathname, search]);
+  }, [pathname, search, hash]);
   return null;
 };
 

@@ -1,0 +1,9 @@
+
+(function(){var b=document.querySelector('.burger'),m=document.getElementById('menu');if(b&&m){b.addEventListener('click',function(){var o=m.classList.toggle('open');b.setAttribute('aria-expanded',o)})}
+document.querySelectorAll('form[data-ajax]').forEach(function(f){f.addEventListener('submit',function(e){e.preventDefault();var msg=f.querySelector('.formmsg'),btn=f.querySelector('button[type=submit]');if(f.querySelector('.hp input').value){return}
+btn.disabled=true;btn.textContent='Sending…';var d={};new FormData(f).forEach(function(v,k){if(k!=='_gotcha')d[k]=v});
+fetch(f.action,{method:'POST',headers:{'Accept':'application/json','Content-Type':'application/json'},body:JSON.stringify(d)}).then(function(r){if(!r.ok)throw 0;f.reset();msg.className='formmsg ok';msg.textContent="Thank you — we've got your message and will be in touch shortly. For a faster reply, WhatsApp us on 07301 498451.";btn.textContent='Sent'})
+.catch(function(){msg.className='formmsg err';msg.textContent='Sorry, that did not send. Please call 020 3143 1718 or WhatsApp 07301 498451.';btn.disabled=false;btn.textContent='Send enquiry'})})});
+var rv=document.querySelector('[data-featurable]');if(rv){var load=function(){if(load.done)return;load.done=1;var s=document.createElement('script');s.src='https://featurable.com/assets/bundle.js';s.defer=true;s.charset='UTF-8';document.body.appendChild(s)};
+if('IntersectionObserver' in window){new IntersectionObserver(function(es,o){if(es[0].isIntersecting){load();o.disconnect()}},{rootMargin:'400px'}).observe(rv)}else load()}
+document.querySelectorAll('[data-wa]').forEach(function(a){a.addEventListener('click',function(){var s=document.getElementById('lesson');if(s&&s.value){a.href='https://wa.me/447301498451?text='+encodeURIComponent("Hi, I'd like to ask about "+s.value+" in Tolworth.")}})})})();

@@ -11,3 +11,5 @@ Plain static website: every page is ready-made HTML in the `site/` folder, so Go
 - Hosting: Netlify (settings in `netlify.toml`)
 
 The previous React/AI Studio version is kept in the git history (commit 5849221).
+
+Design v2: premium redesign with motion and photography (November 2026).

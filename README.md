@@ -1,20 +1,13 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# tolworthdrivingschool.com
 
-# Run and deploy your AI Studio app
+Tolworth Driving School — part of Kings Driving Centre.
 
-This contains everything you need to run your app locally.
+Plain static website: every page is ready-made HTML in the `site/` folder, so Google and AI search can read it instantly. There is no build step.
 
-View your app in AI Studio: https://ai.studio/apps/drive/1zc8cMAvqlsVK1mPZAvY40MUyF_UCG86J
+- Pages: `site/<page>/index.html`
+- Styles: `site/assets/site.css`
+- Enquiry forms send to Formspree (form xojjjabe)
+- Reviews: Featurable widget (Kings Driving Centre Google reviews)
+- Hosting: Netlify (settings in `netlify.toml`)
 
-## Run Locally
-
-**Prerequisites:**  Node.js
-
-
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+The previous React/AI Studio version is kept in the git history (commit 5849221).

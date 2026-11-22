@@ -8,7 +8,20 @@ var b=$('.burger'),m=$('#menu');if(b&&m){b.addEventListener('click',function(){v
 /* header solid */
 var hd=$('header.site');function onS(){if(hd)hd.classList.toggle('solid',scrollY>60)}onS();addEventListener('scroll',onS,{passive:true});
 /* forms */
-$$('form[data-ajax]').forEach(function(f){f.addEventListener('submit',function(e){e.preventDefault();var msg=$('.formmsg',f),btn=$('button[type=submit]',f);if($('.hp input',f).value)return;btn.disabled=true;btn.textContent='Sending…';var o={};new FormData(f).forEach(function(v,k){if(k!=='_gotcha')o[k]=v});
+$$('form[data-ajax]').forEach(function(f){f.addEventListener('submit',function(e){e.preventDefault();var msg=$('.formmsg',f),btn=$('button[type=submit]',f);if($('.hp input',f).value)return;btn.disabled=true;btn.textContent='Sending…';var raw={};new FormData(f).forEach(function(v,k){if(k!=='_gotcha')raw[k]=String(v).trim()});
+var nm=raw.name||'',first=nm.split(' ')[0]||'there',ph=(raw.phone||'').replace(/[^\d+]/g,''),intl=ph.replace(/^\+/,'');if(intl.indexOf('0')===0)intl='44'+intl.slice(1);
+var lesson=raw.lesson||'driving lessons',tr=raw.transmission||'',pcd=(raw.postcode||'').toUpperCase();
+var summary='NEW ENQUIRY - Tolworth Driving School\nName: '+nm+'\nPhone: '+(raw.phone||'')+'\nEmail: '+(raw.email||'')+'\nLesson: '+lesson+(tr?' ('+tr+')':'')+'\nPostcode: '+pcd+'\nAvailability: '+(raw.times||'-')+'\nNotes: '+(raw.message||'-');
+var reply='Hi '+first+', thanks for contacting Tolworth Driving School about '+lesson.toLowerCase()+(tr?' ('+tr.toLowerCase()+')':'')+'. ';
+reply+='We have availability in '+(pcd||'your area')+' and would love to help. When would suit you for your first lesson? - Kings Driving Centre, 020 3143 1718';
+var job='New pupil for you:\n'+nm+' - '+(raw.phone||'')+'\n'+lesson+(tr?' ('+tr+')':'')+'\nPick-up: '+pcd+'\nAvailability: '+(raw.times||'-')+'\nNotes: '+(raw.message||'-');
+var o={'_subject':'New enquiry: '+nm+' - '+lesson+(pcd?' - '+pcd:''),'_replyto':raw.email||'',
+'1. Summary (copy and forward)':summary,
+'2. Reply to pupil on WhatsApp':intl?'https://wa.me/'+intl+'?text='+encodeURIComponent(reply):'(no phone given)',
+'3. Reply to pupil by SMS':ph?'sms:'+ph+'?&body='+encodeURIComponent(reply):'(no phone given)',
+'4. Forward to instructor on WhatsApp':'https://wa.me/?text='+encodeURIComponent(job),
+'5. Call pupil':ph?'tel:'+ph:'-'};
+['lesson','transmission','postcode','name','phone','email','times','message','source'].forEach(function(k){if(raw[k])o['Field: '+k]=raw[k]});
 fetch(f.action,{method:'POST',headers:{'Accept':'application/json','Content-Type':'application/json'},body:JSON.stringify(o)}).then(function(r){if(!r.ok)throw 0;f.reset();msg.className='formmsg ok';msg.textContent="Thank you — we've got your message and will be in touch shortly. For a faster reply, WhatsApp us on 07301 498451.";btn.textContent='Sent ✓'}).catch(function(){msg.className='formmsg err';msg.textContent='Sorry, that did not send. Please call 020 3143 1718 or WhatsApp 07301 498451.';btn.disabled=false;btn.textContent='Send enquiry'})})});
 /* featurable lazy */
 var rv=$('[data-featurable]');if(rv){var ld=function(){if(ld.x)return;ld.x=1;var s=d.createElement('script');s.src='https://featurable.com/assets/bundle.js';s.defer=true;s.charset='UTF-8';d.body.appendChild(s)};if('IntersectionObserver'in window){new IntersectionObserver(function(es,o){if(es[0].isIntersecting){ld();o.disconnect()}},{rootMargin:'600px'}).observe(rv)}else ld()}

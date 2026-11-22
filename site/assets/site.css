@@ -193,3 +193,5 @@ body.home header.site.solid:before{background:rgba(10,15,20,.78);-webkit-backdro
 body.menu-open header.site:before{background:var(--tar)!important}
 @media(max-width:1020px){.menu{position:fixed;inset:0;height:100vh;height:100dvh;transform:translateY(-100%);visibility:hidden;transition:transform .6s var(--ease),visibility 0s .6s;padding:110px 24px 40px;overflow-y:auto}
 .menu.open{transform:none;visibility:visible;transition:transform .6s var(--ease),visibility 0s}.menu li{width:100%;text-align:center}}
+
+/* v2.2 */ img{height:auto}.polaroid img{height:auto;aspect-ratio:3/4;object-fit:cover}.stop-media img{height:120%}.tile img,.hero-media img,.pagehead .bg,.final img,.cta-band img{height:100%}

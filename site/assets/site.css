@@ -371,3 +371,11 @@ body{font-size:calc(18px*var(--fs,1))}html.a11y-lh body,html.a11y-lh p,html.a11y
  .hero-card>div:last-child{font-size:.62rem!important;margin-top:4px!important;flex-basis:auto}
  .hero-card .stars{font-size:.85rem;letter-spacing:1px}
 }
+
+/* ===== Mobile polish v4 ===== */
+@media(max-width:760px){
+ .hero-card{top:calc(58svh - 205px);max-width:150px;padding:10px 12px;border-radius:14px}
+ .hero-card .big{font-size:1.9rem}
+ .hero-card>div:last-child{font-size:.58rem!important}
+ .hero .wrap{margin-top:-22px}
+}

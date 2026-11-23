@@ -318,3 +318,30 @@ html.a11y-hidebar .a11y-btn{display:none}
 
 body{font-size:calc(18px*var(--fs,1))}html.a11y-lh body,html.a11y-lh p,html.a11y-lh li{line-height:var(--lhv)!important}html.a11y-ls body *{letter-spacing:.06em!important;word-spacing:.14em!important}.a11y-panel[hidden]{display:block;visibility:hidden}.a11y-panel.open{visibility:visible}
 @media print{header.site,footer.site,.fab,.mbar,.a11y-btn,.pagehead .ctas,.rnav,.no-print{display:none!important}.rsec{display:none}.rsec.printme{display:block;border:0;padding:0}body{background:#fff}}
+
+/* ===== Mobile polish v1 ===== */
+@media(max-width:760px){
+ body{font-size:calc(17px*var(--fs,1))}
+ .announce{font-size:.76rem;padding:7px 12px}
+ .nav{height:64px}.brand img{height:40px}.brand b{font-size:.92rem}.brand small{font-size:.66rem}
+ .hero{min-height:auto}
+ .hero .wrap{padding-top:128px;padding-bottom:36px}
+ .hero h1{font-size:clamp(2.3rem,10.6vw,3rem);max-width:none;line-height:1.03;letter-spacing:-.03em}
+ .hero .lead{font-size:1.02rem;line-height:1.55;max-width:none}
+ .hero .ctas{margin-top:22px;gap:10px}.hero .ctas .btn{flex:1 1 auto;justify-content:center;padding:15px 18px}
+ .kings-chip{font-size:.74rem;white-space:nowrap;padding:6px 12px 6px 6px;margin-bottom:18px;max-width:100%;overflow:hidden;text-overflow:ellipsis}
+ .hero-card{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:20px;padding:14px 16px;border-radius:16px;max-width:none}
+ .hero-card hr{display:none}.hero-card .big{font-size:2rem}.hero-card>div:last-child{flex-basis:100%;margin-top:0!important}
+ .scrollcue{display:none}
+ h2{font-size:clamp(1.85rem,8vw,2.4rem)}.sec-head{margin-bottom:36px}.sec-head p{font-size:1.02rem}
+ .pagehead{min-height:52vh}.pagehead h1{font-size:clamp(2.1rem,9.5vw,2.8rem)}.pagehead .lead{font-size:1.02rem}.pagehead .wrap{padding-bottom:44px}
+ .stop h3{font-size:1.6rem}.tile h3{font-size:1.45rem}.final h2{font-size:clamp(2.6rem,13vw,3.4rem)}
+ .marquee span{font-size:1rem}.wordmark{margin-top:50px}
+ /* floating controls: one WhatsApp bubble + bottom bar with accessibility, call, book */
+ .fab{bottom:82px;right:14px}.fab .call{display:none}.fab a{width:52px;height:52px}
+ .mbar{grid-template-columns:50px 1fr 1.4fr;align-items:center;padding:8px 10px calc(8px + env(safe-area-inset-bottom))}
+ .mbar .btn{padding:13px 10px;font-size:.95rem}
+ .mbar .a11y-btn{position:static;width:46px;height:46px;box-shadow:none}
+ .mbar .a11y-btn svg{width:24px;height:24px}
+ body{padding-bottom:76px}
+}

@@ -9,7 +9,7 @@
   status = 301
 [[redirects]]
   from = "/resources"
-  to = "/tolworth-test-centre/"
+  to = "/learner-resources/"
   status = 301
 [[redirects]]
   from = "/admin"

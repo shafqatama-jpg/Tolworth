@@ -354,3 +354,20 @@ body{font-size:calc(18px*var(--fs,1))}html.a11y-lh body,html.a11y-lh p,html.a11y
  .hero-card{position:relative;right:auto;bottom:auto;margin:0 24px 40px;width:auto;max-width:520px;align-self:flex-start}
 }
 @media(max-width:760px){.hero-card{margin:0 20px 32px;align-self:stretch}.hero-card .stars{font-size:1rem}}
+
+/* ===== Mobile polish v3: photo-first hero ===== */
+@media(max-width:760px){
+ .hero{display:block;min-height:0;padding:0}
+ .hero:before{bottom:auto;height:58svh;background:linear-gradient(180deg,rgba(10,15,20,.65) 0%,rgba(10,15,20,0) 26%,rgba(10,15,20,0) 62%,#0A0F14 100%)}
+ .hero-media{position:relative;inset:auto;height:58svh;overflow:hidden}
+ .hero-media img{object-position:62% 55%;transform:none}
+ .hero-media img.kb{animation:kbm 18s ease-in-out infinite alternate}
+ @keyframes kbm{from{transform:scale(1.02)}to{transform:scale(1.1)}}
+ .hero .wrap{padding-top:0;margin-top:-34px;padding-bottom:30px}
+ .hero-card{position:absolute;top:calc(58svh - 150px);right:14px;left:auto;bottom:auto;display:block;width:auto;max-width:170px;margin:0;padding:12px 14px;border-radius:16px;z-index:3;text-align:left;background:rgba(10,15,20,.62)}
+ .hero-card>div:nth-child(2),.hero-card hr{display:none}
+ .hero-card>div:nth-child(4){font-size:.72rem!important}
+ .hero-card .big{font-size:2.2rem}.hero-card .big small{font-size:.8rem}
+ .hero-card>div:last-child{font-size:.62rem!important;margin-top:4px!important;flex-basis:auto}
+ .hero-card .stars{font-size:.85rem;letter-spacing:1px}
+}

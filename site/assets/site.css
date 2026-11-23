@@ -345,3 +345,12 @@ body{font-size:calc(18px*var(--fs,1))}html.a11y-lh body,html.a11y-lh p,html.a11y
  .mbar .a11y-btn svg{width:24px;height:24px}
  body{padding-bottom:76px}
 }
+
+/* ===== Mobile polish v2 ===== */
+.journey h2{color:#fff}.journey .kicker{color:var(--amber)}.journey .sec-head p{color:rgba(255,255,255,.72)}
+@media(max-width:1020px){
+ .hero{flex-direction:column;align-items:stretch;justify-content:flex-end}
+ .hero .wrap{width:auto}
+ .hero-card{position:relative;right:auto;bottom:auto;margin:0 24px 40px;width:auto;max-width:520px;align-self:flex-start}
+}
+@media(max-width:760px){.hero-card{margin:0 20px 32px;align-self:stretch}.hero-card .stars{font-size:1rem}}

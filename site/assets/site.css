@@ -379,3 +379,9 @@ body{font-size:calc(18px*var(--fs,1))}html.a11y-lh body,html.a11y-lh p,html.a11y
  .hero-card>div:last-child{font-size:.58rem!important}
  .hero .wrap{margin-top:-22px}
 }
+
+/* ===== Hero video ===== */
+.hero-media .hv{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1s ease;transform:none}
+.hero-media .hv.on{opacity:1}
+.a11y-pause .hero-media .hv{opacity:0}
+@media(max-width:760px){.hero-media .hv{object-position:62% 55%}}

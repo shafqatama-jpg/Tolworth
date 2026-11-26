@@ -290,3 +290,8 @@ body.x-lock{overflow:hidden}
 .x-rv{opacity:0;transform:translateY(14px);transition:opacity .7s,transform .8s var(--x-e)}
 .x-rv.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;animation:none!important}.x-rv{opacity:1;transform:none}}
+
+/* v2: stop sideways scroll on phones */
+html,body{overflow-x:clip;max-width:100%}
+.x-main,.x-phead,.x-chips,.x-rate{max-width:100%}
+.x-chips{flex-wrap:wrap}
